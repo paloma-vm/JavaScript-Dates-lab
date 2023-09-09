@@ -244,6 +244,14 @@ console.log('--------- Problem 4 --------')
 
 function whensYourParty(date, year) {
   // Find the day of the year for your birthday
+  const yourBirthday = new Date(date)
+  yourBirthday.setFullYear(year)
+  console.log(yourBirthday)
+  // Find the day of the week for that day
+  dayOfWeekOfYourBirthday = days[yourBirthday.getDay()]
+  message = `In ${year}, your birthday is on a ${dayOfWeekOfYourBirthday}`
+  console.log(message)
+  return message
 }
 
 whensYourParty(bday, 2022)
@@ -251,3 +259,20 @@ whensYourParty(bday, 2022)
 // Stretch Goal: Return an array listing all 
 // the days when your birthday occured since 
 // you were born. 
+function birthdayDays(date) {
+  const startDate = new Date(date)
+  const daysArray = [days[startDate.getDay()]]
+
+  while (startDate < today) {
+    const futureDate = new Date(startDate)
+    futureDate.setFullYear(startDate.getFullYear() + 1)
+    startDate.setFullYear(startDate.getFullYear() + 1) // add a year
+    daysArray.push(days[futureDate.getDay()])
+    const message = `In ${futureDate.getFullYear()}, your birthday was on a ${days[futureDate.getDay()]}`
+    console.log(message)
+  }
+  console.log(daysArray)
+  return daysArray
+}
+
+birthdayDays(bday)
