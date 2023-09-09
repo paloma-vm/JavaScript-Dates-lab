@@ -144,7 +144,6 @@ function consecutiveDates(date, repeat, offset, unit = 'day') {
     dates.push(futureDate)
   }
 
-  // TODO: format the dates
   console.log(dates)
 
   return dates
@@ -196,7 +195,11 @@ function orderDatesIntoDict(dates) {
     if (date < today) {
       orderedDates.past.push(date)
     }
-    else if (date.getDate() === today.getDate() && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear()) {
+    else if (
+      date.getDate() === today.getDate() && 
+      date.getMonth() === today.getMonth() && 
+      date.getFullYear() === today.getFullYear()
+      ) {
       orderedDates.present.push(date)
     }
     else {
@@ -218,7 +221,15 @@ console.log('--------- Problem 3 --------')
 
 function nextDate(dates) {
   // find the date that will happen next in dates
-  // return the next date
+
+  const datesInDict = orderDatesIntoDict(dates)
+  const nextAppointment = datesInDict.future[0]
+  
+  const timeDiff = nextAppointment - today
+  const daysDiff = (timeDiff / 1000 / 60 / 60 / 24).toFixed(2)
+  const message = `Your next appointment is ${daysDiff} days from now.`
+  console.log(message)
+  return message
 }
 
 nextDate([today, dueDate, startDate, bday, newYear])
