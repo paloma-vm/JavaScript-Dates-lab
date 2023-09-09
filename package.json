@@ -1,0 +1,14 @@
+{
+  "name": "javascript-dates-lab-main",
+  "version": "1.0.0",
+  "description": "JavaScript Date Object lab starter code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@palomavm/string-lib": "^1.0.3"
+  }
+}
